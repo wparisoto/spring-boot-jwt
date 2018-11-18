@@ -1,5 +1,7 @@
 package br.com.springbootjwt;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -42,7 +45,7 @@ public class TokenAuthenticationService {
 					.getSubject();
 			
 			if (user != null) {
-				return new UsernamePasswordAuthenticationToken(user, null);
+				return new UsernamePasswordAuthenticationToken(user, null, (Collection<? extends GrantedAuthority>) new ArrayList<>());
 			}
 		}
 		return null;
