@@ -45,7 +45,7 @@ public class TokenAuthenticationService {
 					.getSubject();
 			
 			if (user != null) {
-				return new UsernamePasswordAuthenticationToken(user, null, (Collection<? extends GrantedAuthority>) new ArrayList<>());
+				return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<AutoridadeAutenticacao>());
 			}
 		}
 		return null;
